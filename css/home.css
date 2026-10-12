@@ -1,0 +1,29 @@
+:root{
+    --solid-heading:#42446E;
+}
+main{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+}
+section{
+        display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+h1{
+    font-size: 57px;
+    font-weight: 700;
+    color: var(--solid-heading);
+    line-height: 70px;
+}
+.hero__name{
+    background: linear-gradient(#13B0F5, #CA24B4);
+    color: transparent;
+    background-clip: text;
+}
+.hero__photo{
+    display: flex;
+    align-items: flex-end;
+}
