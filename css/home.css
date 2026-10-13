@@ -27,3 +27,15 @@ h1{
     display: flex;
     align-items: flex-end;
 }
+@media (max-width: 600px) {
+    .site-nav{
+        margin-bottom: 200px;
+    }
+    
+    .hero{
+        flex-direction: column;
+    }
+    .hero__title{
+        font-size: 44px;
+    }
+}
