@@ -1,0 +1,28 @@
+.hero{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h2{
+    font-weight: 700;
+    font-size: 58px;
+    line-height: 70px;
+    letter-spacing: -1px;
+}
+.h2-1{
+    margin: 0;
+    color: #1E0E62;
+    margin-bottom: 9px;
+}
+.h2-2{
+    margin: 0;
+    background: linear-gradient(#13B0F5, #E70FAA);
+    color: transparent;
+    background-clip: text;
+}
+.container2{
+    align-items: top;
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
