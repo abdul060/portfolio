@@ -26,3 +26,13 @@ h2{
     justify-content: center;
     margin-top: 200px;
 }
+
+@media (max-width: 992px){
+    .h2-1{
+        font-size: 20px;
+    }
+    .h2-2{
+        font-size: 20px;
+        line-height: 50px;
+    }
+}

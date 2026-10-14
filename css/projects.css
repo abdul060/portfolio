@@ -17,6 +17,7 @@
     overflow: unset;
     height: 100%;
     display: flex;
+    max-width: 375px;
 }
 .card-body-holder{
     padding: 17px 31px 25px 28px;
@@ -73,4 +74,12 @@
     display: flex;
     align-items: center;
     gap: 10px;
+}
+@media (max-width: 600px){
+    .card-container{
+        max-width: 100%;
+    }
+    .card-container img{
+        max-width: 100%;
+    }
 }
