@@ -1,0 +1,44 @@
+{
+    "education": [
+        {
+            "organization": "ChasAcademy",
+            "title": "Fullstackutvecklare JavaScript",
+            "period": "2026-2028",
+            "description": "Frontend och backend utvceklare med fokus på javascript"
+        },
+        {
+            "organization": "Gymnasium",
+            "title": "Teknik",
+            "period": "2022-2025",
+            "description": "Teknik inrikting info och medieteknik."
+        },
+        {
+            "organization": "Eriksdalsskolan",
+            "title": "Grundskolan",
+            "period": "2016-2025",
+            "description": "Från 1-9"
+        }
+    ],
+    "work": [
+        {
+            "organization": "Circle k",
+            "title": "Säljare",
+            "period": "2025-pågående",
+            "description": "Kundservice och kassahantering för biluthyrning via Circle K Wheels. Hantering av betalningar och kundärenden."
+        },
+        {
+            "organization": "Tarantsec",
+            "title": "Evenemangsvärd/securitypersonal",
+            "period": "2025-pågående",
+                "description": "Incheckning och visitering av besökare. Ansvar för trygghet, ordning och service."
+        },
+        {
+            "organization": "Centrum för Psykiatriforskning",
+            "title": "Feriejobb",
+            "period": "2024-2024",
+            "description": "Uppdatering av adresslistor och data i Excel Hjäl med nyhetsbrev och kontorsuppgifter"
+        } 
+    ]
+}
+
+

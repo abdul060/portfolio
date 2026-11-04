@@ -45,6 +45,7 @@
 .entry__main,
 .entry__side {
   min-width: 0;
+  max-width: 65%;
 }
 
 .entry__title {
@@ -110,6 +111,12 @@
   font-weight: 600;
   line-height: 1.5;
   text-align: center;
+}
+
+.entry__description {
+  margin: 0.5rem 0 0;
+  color: var(--color-heading);
+  font-size: 0.875rem;
 }
 
 @media (min-width: 601px) {
