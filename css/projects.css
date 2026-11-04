@@ -5,13 +5,13 @@
 
 .page-title h1 {
   margin: 0;
-  color: #42446e;
+  color: var(--color-primary);
   font-size: 7vw;
 }
 
 .page-title p {
   margin: 0.5rem 0 0;
-  color: #666;
+  color: var(--color-heading);
 }
 
 .hero {
@@ -43,7 +43,7 @@
 
 .card-body-h3 {
   margin: 0;
-  color: #000;
+  color: var(--color-text);
   font-family: var(--font-main);
   font-size: 1.25rem;
   font-weight: 500;
@@ -51,7 +51,7 @@
 }
 
 .card-body-p-1 {
-  color: #666;
+  color: var(--color-heading);
   font-family: var(--font-main);
   font-size: 1rem;
   font-weight: 300;
@@ -59,7 +59,7 @@
 }
 
 .card-body-p-2 {
-  color: #42446e;
+  color: var(--color-primary);
   font-family: var(--font-main);
   font-size: 0.875rem;
   font-weight: 400;
@@ -94,7 +94,7 @@
 }
 
 .card-footer-a {
-  color: #000;
+  color: var(--color-text);
   font-family: var(--font-main);
   font-size: 0.875rem;
   font-weight: 400;

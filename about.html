@@ -42,124 +42,28 @@
 
   <main id="main" class="container about">
      <section class="section" aria-labelledby="about-title">
-      <h1 class="section__title">About Me</h1>
+      <h1 id="about-title" class="section__title">About Me</h1>
       <p class="section__text">The Generator App is an online tool that helps you to export ready-made templates ready to work as your future website. It helps you to combine slides, panels and other components and export it as a set of static files: HTML/CSS/JS.</p>
     </section>
+
+
       <section class="section" aria-labelledby="work-title">
       <h2 id="work-title" class="section__title">Work Experience</h2>
-      <ul class="entry-list">
-        <li class="entry">
-  <div class="entry__main">
-    <h3 class="entry__title">Junior Web Developer</h3>
-    <p class="entry__meta">
-      <span class="entry__meta-item">
-        <img src="images/office-building.svg" alt="" width="16" height="12">
-        Dr. Rajkumar’s Learning App
-      </span>
-      <span class="entry__meta-item">
-        <img src="images/carbon_location.svg" alt="" width="16" height="12">
-        Bengaluru
-      </span>
-    </p>
-  </div>
-
-  <div class="entry__side">
-    <p class="badge">Full Time</p>
-    <p class="entry__meta entry__meta--end">
-      <span class="entry__meta-item">
-        <img src="images/calendar-dates.svg" alt="" width="16" height="12">
-        <time datetime="2021-09">Sep 2021</time> - <time datetime="2021-12">Dec 2021</time>
-      </span>
-    </p>
-  </div>
-</li>
-
-
-<li class="entry">
-  <div class="entry__main">
-    <h3 class="entry__title">Web Development Intern</h3>
-    <p class="entry__meta">
-      <span class="entry__meta-item">
-        <img src="images/office-building.svg" alt="" width="16" height="12">
-        IonPixelz Web Solutions
-      </span>
-      <span class="entry__meta-item">
-        <img src="images/carbon_location.svg" alt="" width="16" height="12">
-        Bengaluru
-      </span>
-    </p>
-  </div>
-
-  <div class="entry__side">
-    <p class="badge">Internship</p>
-    <p class="entry__meta entry__meta--end">
-      <span class="entry__meta-item">
-        <img src="images/calendar-dates.svg" alt="" width="16" height="12">
-        <time datetime="2021-09">Sep 2021</time> - <time datetime="2021-12">Dec 2021</time>
-      </span>
-    </p>
-  </div>
-</li>
-
-<li class="entry">
-  <div class="entry__main">
-    <h3 class="entry__title">SEO / SEM Specialist</h3>
-    <p class="entry__meta">
-      <span class="entry__meta-item">
-        <img src="images/office-building.svg" alt="" width="16" height="12">
-        HAAPS
-      </span>
-      <span class="entry__meta-item">
-        <img src="images/carbon_location.svg" alt="" width="16" height="12">
-        Bengaluru
-      </span>
-    </p>
-  </div>
-
-  <div class="entry__side">
-    <p class="badge">Internship</p>
-    <p class="entry__meta entry__meta--end">
-      <span class="entry__meta-item">
-        <img src="images/calendar-dates.svg" alt="" width="16" height="12">
-        <time datetime="2021-09">Sep 2021</time> - <time datetime="2021-12">Dec 2021</time>
-      </span>
-    </p>
-  </div>
-</li>
-
-   
-      </ul>
+      <ul class="entry-list" id="work-list"></ul>
+      <p class="status" id="work-status" role="status"></p>
     </section>
+
      <section class="section" aria-labelledby="edu-title">
       <h2 id="edu-title" class="section__title">Education</h2>
-      <ul class="entry-list">
-       <li class="entry">
-  <div class="entry__main">
-    <h3 class="entry__title">Bachelor in Electronics & Communication</h3>
-    <p class="entry__meta">
-      <span class="entry__meta-item">
-        <img src="images/office-building.svg" alt="" width="16" height="12">
-        Bangalore Instutute of Technology
-      </span>
-    </p>
-  </div>
-
-  <div class="entry__side">
-    <p class="badge">Full Time</p>
-    <p class="entry__meta entry__meta--end">
-      <span class="entry__meta-item">
-        <img src="images/calendar-dates.svg" alt="" width="16" height="12">
-        <time datetime="2021-09">Aug 2015</time> - <time datetime="2021-12">Dec 2020</time>
-      </span>
-    </p>
-  </div>
-</li>
-      </ul>
+      <ul class="entry-list" id="education-list"></ul>
+      <p class="status" id="education-status" role="status"></p>
     </section>
   </main>
 
   <footer class="site-footer">
     <p>Designed and built by <span class="gradient-footer-text">Abdul</span> with <span class="gradient-footer-text">Love </span> &amp; <span class="gradient-footer-text">Coffee</span> </p>
   </footer>
+
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
