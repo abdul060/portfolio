@@ -102,6 +102,7 @@
   text-underline-offset: 0.15em;
 }
 
+
 @media (min-width: 601px) {
     header{
         padding: 4.875rem 4rem;
