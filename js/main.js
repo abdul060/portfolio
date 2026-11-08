@@ -1,9 +1,5 @@
-function createElement(tag, className, text) {
-  const element = document.createElement(tag);
-  if (className) element.className = className;
-  if (text) element.textContent = text;
-  return element;
-}
+import { createElement, setStatus, fetchJson } from "./utils.js";
+
 
 function createMetaItem(iconSrc, text) {
   const item = createElement("span", "entry__meta-item");
@@ -43,20 +39,7 @@ function renderList(listId, items) {
   list.replaceChildren(...items.map(createEntry));
 }
 
-function setStatus(statusId, message, isError = false) {
-  const status = document.getElementById(statusId);
-  if (!status) return;
-  status.textContent = message;
-  status.classList.toggle("status--error", isError);
-}
 
-async function fetchJson(url) {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Request failed: ${response.status}`);
-  }
-  return response.json();
-}
 
 const CV_SECTIONS = [
   { key: "work", listId: "work-list", statusId: "work-status" },

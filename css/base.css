@@ -167,6 +167,15 @@ footer p {
   margin: 0 0 2rem;
 }
 
+.status {
+  margin: 0.75rem 0 0;
+  color: var(--color-heading);
+}
+
+.status--error {
+  color: #b00020;
+}
+
 @media (min-width: 601px) {
   header{
         padding: 4.875rem 4rem;
