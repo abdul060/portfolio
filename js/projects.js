@@ -1,5 +1,13 @@
 const projectList = document.querySelector("#project-list");
 const projectStatus = document.querySelector("#project-status");
+const showMoreButton = document.querySelector("#show-more-btn");
+const filterButtons = document.querySelectorAll(".project-filters button");
+
+let allProjects = [];
+let showAll = false;
+let activeFilter = "all";
+
+
 
 const projectImages = [
     "images/card-img-1.png",
@@ -75,6 +83,44 @@ function createProjectCard(repo, index) {
 
     return card;
 }
+function renderProjects() {
+    projectList.replaceChildren();
+
+    const filteredProjects = allProjects.filter((repo) => {
+        if (activeFilter === "all") {
+            return true;
+        }
+
+        const language = (repo.language || "").toLowerCase();
+
+        if (activeFilter === "javascript") {
+            return language === "javascript";
+        }
+
+        if (activeFilter === "html") {
+            return language === "html" || language === "css";
+        }
+
+        return false;
+    });
+
+    const visibleProjects = showAll
+        ? filteredProjects
+        : filteredProjects.slice(0, 6);
+
+    visibleProjects.forEach((repo, index) => {
+        const card = createProjectCard(repo, index);
+        projectList.append(card);
+    });
+
+    showMoreButton.hidden = filteredProjects.length <= 6;
+    showMoreButton.textContent = showAll ? "Show Less" : "Show More";
+
+    projectStatus.textContent = filteredProjects.length === 0
+        ? "No projects match this filter."
+        : "";
+}
+
 
 async function loadProjects() {
     const url = "https://api.github.com/users/abdul060/repos?sort=updated&per_page=100";
@@ -91,15 +137,24 @@ async function loadProjects() {
 
         const repos = await response.json();
 
-        if (repos.length === 0) {
+        const localResponse = await fetch("./data/projects.json");
+
+        if (!localResponse.ok) {
+             throw new Error(`HTTP error: ${localResponse.status}`);
+        }
+
+        const localProjects = await localResponse.json();
+
+
+        allProjects = [...repos, ...localProjects];
+
+        if (allProjects.length === 0) {
             projectStatus.textContent = "No projects available.";
             return;
         }
 
-        repos.forEach((repo, index) => {
-            const card = createProjectCard(repo, index);
-            projectList.append(card);
-        });
+        renderProjects();
+
 
         projectStatus.textContent = "";
 
@@ -108,5 +163,26 @@ async function loadProjects() {
         console.error(error);
     }
 }
+
+showMoreButton.addEventListener("click", () => {
+    showAll = !showAll;
+    renderProjects();
+});
+
+filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+        showAll = false;
+
+        filterButtons.forEach((filterButton) => {
+            filterButton.setAttribute(
+                "aria-pressed",
+                String(filterButton === button)
+            );
+        });
+
+        renderProjects();
+    });
+});
 
 loadProjects();

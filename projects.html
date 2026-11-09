@@ -52,8 +52,22 @@
       <p>Things I’ve built so far</p>
     </div>
         <section id="projects-list" aria-label="Projects">
+          <div class="project-filters" aria-label="Filter projects">
+          <button type="button" data-filter="all" aria-pressed="true">
+              All Projects
+          </button>
+          <button type="button" data-filter="javascript" aria-pressed="false">
+              JavaScript
+          </button>
+          <button type="button" data-filter="html" aria-pressed="false">
+              HTML/CSS
+          </button>
+          </div>
           <ul class="hero" id="project-list"></ul>
           <p class="status" id="project-status" role="status"></p>
+          <button type="button" id="show-more-btn" hidden>
+              Show More
+          </button>
         </section>
   </main>
 
