@@ -29,6 +29,7 @@
   object-fit: contain;
 }
 
+
 @media (min-width: 601px) {
   header{
         padding: 4.875rem 4rem;

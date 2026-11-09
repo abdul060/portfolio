@@ -31,6 +31,11 @@
           <li><a href="https://github.com/" class="social-list__link"><img src="images/github-icon.svg" alt="" width="24" height="24"><span class="visually-hidden"></span></a></li>
           <li><a href="https://x.com/" class="social-list__link"><img src="images/x-icon.svg" alt="" width="24" height="24"><span class="visually-hidden"></span></a></li>
           <li><a href="https://www.linkedin.com/" class="social-list__link"><img src="images/linkedin-icon.svg" alt="" width="24" height="24"><span class="visually-hidden"></span></a></li>
+          <li>
+             <button type="button" id="theme-toggle" aria-label="Switch to dark mode">
+              Dark Mode
+            </button>
+         </li>
         </ul>
       </nav>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
@@ -38,6 +43,7 @@
         <span class="menu-toggle__icon" aria-hidden="true">&#9776;</span>
       </button>
     </div>
+
   </header>
 
   <main id="main" class="container">
@@ -45,15 +51,30 @@
       <h1>Projects</h1>
       <p>Things I’ve built so far</p>
     </div>
-    <section class="hero" id="projects-list" aria-label="Projects">
-      <ul class="hero" id="project-list"></ul>
-      <p class="status" id="project-status" role="status"></p>
-    </section>
+        <section id="projects-list" aria-label="Projects">
+          <div class="project-filters" role="group" aria-label="Filter projects">
+          <button type="button" data-filter="all" aria-pressed="true">
+              All Projects
+          </button>
+          <button type="button" data-filter="javascript" aria-pressed="false">
+              JavaScript
+          </button>
+          <button type="button" data-filter="html" aria-pressed="false">
+              HTML/CSS
+          </button>
+          </div>
+          <ul class="hero" id="project-list"></ul>
+          <p class="status" id="project-status" role="status"></p>
+          <button type="button" id="show-more-btn" hidden>
+              Show More
+          </button>
+        </section>
   </main>
 
   <footer class="site-footer">
     <p>Designed and built by <span class="gradient-footer-text">Abdul</span> with <span class="gradient-footer-text">Love </span> &amp; <span class="gradient-footer-text">Coffee</span> </p>
   </footer>
   <script type="module" src="js/projects.js"></script>
+  <script src="js/theme.js" defer></script>
 </body>
 </html>
