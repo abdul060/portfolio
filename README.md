@@ -8,7 +8,7 @@ I den här uppgiften har jag gjort portfolion mer dynamisk genom att hämta mitt
 Länkar
 
 GitHub: https://github.com/abdul060
-Publicerad portfolio: 
+Publicerad portfolio: https://abdul060.github.io/portfolio/
 
 Reflektion
 
