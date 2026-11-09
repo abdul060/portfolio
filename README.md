@@ -1,41 +1,102 @@
-# portfolio
-Publicerad sida: {https://effervescent-churros-414d62.netlify.app/}
+U02 – Portfolio med JavaScript
+
+
+Det här är min personliga portfolio som jag har vidareutvecklat från uppgift U01. Sidan är byggd med HTML, CSS och JavaScript och är responsiv för både mobil och dator.
+
+I den här uppgiften har jag gjort portfolion mer dynamisk genom att hämta mitt CV från en JSON-fil och mina projekt från GitHubs API. Jag har också lagt till mörkt och ljust läge samt filtrering av projekt.
+
+Länkar
+
+GitHub: https://github.com/abdul060
+Publicerad portfolio: 
 
 Reflektion
-Från skiss till kod
-Jag började med att dela upp skissen i det som återkommer på alla sidor (header med logotyp, navigering och sociala ikoner, samt footer) och det som är unikt per sida. Det återkommande ligger i base.css, och varje sida har en egen fil ( home.css, about.css, tech-stack.css, projects.css, conatct.css). Då behöver en ndring i headern bara göras på ett ställe. Mått som 704px bredd på about och 375px på projektkorten mätte jag i Figma.
 
-Två saker var svåra att översätta den första var posterna under Work Experience i about.html. Min första struktur hade felaktigt nästlade div, så Flexbox kunde inte avgöra vad som var vänster och höger. Jag löste det genom att göra .entry till en flex-rad med två barn, .entry__main (title, företag, ort) och .entry__side (badge, datum). Båda Båda barnen är flex-kolumner. Den andra var gradienttexten i footern och i namnet i hero. CSS kan inte ge text en gradient med color, så jag använde background: linear-gradient(...) tillsammans med color: transparent och background-clip: text (.gradient-footer-text, .hero__name), jag har fått hjälp av Claude och min bror för att göra detta.
+Datans väg – GitHub API
 
-Semantik
+När en besökare öppnar min projektsida körs funktionen `loadProjects()` i `projects.js`. Funktionen använder `fetch()` för att skicka en HTTP GET-förfrågan till GitHubs API.
 
-Jag valde header, nav, main och footer för sidans delar, så att skärmläsare kan hoppa mellan landmärken. Menyn, de sociala ikonerna, posterna och teknikikonerna är ul/li, eftersom de är grupper av likadana objekt. På About-sidan är rubrikhierarkin h1 (About Me), h2 (Work Experience, Education) och h3 (varje jobbtitel). Datumen ligger i time med datetime, och menyknappen är en riktig button, så den går att nå med tangentbord utan extra kod. Varje section har en rubrik.
+API:et skickar tillbaka JSON-data med information om mina publika repositories, bland annat namn, beskrivning, programmeringsspråk och länkar.
 
-Jag landade i div på några ställen. .entry__main och .entry__side är rena layoutgrupper utan eget innehållsvärde, så div är rimligt där. Profilbildens .hero__photo hade kunnat vara en figure. Projektkorten på Projects-sidan (.card-container, .card-header, .card-body-holder) är det största misstaget: varje kort är ett fristående innehåll och borde vara en article i en ul. Kontaktsidans e-postadress ligger i en h2, men den är inte en rubrik och borde vara en länk med mailto:.
+Jag kontrollerar först att anropet lyckades med `response.ok`. Sedan använder jag `response.json()` för att omvandla svaret till JavaScript-objekt.
 
-Layout
+Projekten sparas i arrayen `allProjects`. Därefter använder jag `renderProjects()` och `createProjectCard()` för att skapa projektkort som visas på sidan.
 
-Jag använde Flexbox där innehållet ligger längs en axel. .site-header__inner lägger logotypen till vänster och navigeringen till höger med justify-content: space-between. .entry och .entry__meta ordnar poster och metainformation. body är en flex-kolumn med main { flex: 1 }, så att footern hamnar längst ner även på korta sidor. Projektkorten ordnas med flex-wrap och column-gap/row-gap på .hero i projects.css. 
+Jag valde den här lösningen eftersom mina projekt kan hämtas automatiskt från GitHub utan att jag behöver skriva in dem direkt i HTML.
 
-Grid använde jag för .tech-list, eftersom ikonerna ska ligga i rader och kolumner samtidigt: fyra kolumner på mobil och sex på desktop (repeat(4, 1fr) och repeat(6, 1fr)). Med mer tid hade jag även gjort projektkorten till Grid. De är lika breda och ska ligga i kolumner, vilket Grid beskriver mer direkt än flex-wrap. 
+Två datakällor
 
-Brytpunkterna ligger vid 600 px och 992 px i base.css. 600 px kommer från skissen, där mobillayouten är 600 px bred, och där fälls navigeringen ihop till en kolumn med hamburgarknapp. 992 px valde jag för att navigeringen med sina 54 px mellanrum inte ryms bredvid logotypen i mellanlägen, så teckenstorlek och avstånd minskar där. I tech-stack.css använder jag min-width: 48em (mobile first), men resten av filerna är skrivna desktop först med max-width. Det är inkonsekvent, och det borde ha varit mobile first genomgående.
+Jag använder både lokala JSON-filer och GitHubs API.
 
-Användbarhet 
-Jag känner igen konsekvens (samma header och footer överallt), tydlig visuell hierarki (42 px rubriker mot 12 px metatext) och gott om luft mellan sektionerna. Posterna under Work Experience grupperas med avskiljande linjer. Det följer närhetsprincipen, eftersom det som hör ihop ligger nära varandra. Ikonerna ligger alltid bredvid sin text, och länkarna i korten är understrukna så att man ser att de går att klicka på. 
+Mitt CV ligger i `cv.json`, där jag själv har skrivit in mina utbildningar och tidigare arbeten. Jag använder också `projects.json` för att lägga till ett extra projekt.
 
-Jag hade gjort annorlunda: kontrasten i den små grå texten är för låg, och e-postadressen på Contact-sidan är inte klickbar. Jag hade också lagt till ett formulär eller en mailto-länk.
+Skillnaden är att jag själv kontrollerar innehållet i mina JSON-filer, medan GitHub är en extern datakälla som kan ändras eller vara tillfälligt otillgänglig.
 
-Tillgänglighet
+Båda datakällorna läses med `fetch()` och omvandlas med `response.json()`. Jag valde JSON eftersom det gör det enkelt att hålla informationen separat från HTML-koden.
 
-Bilder har alt: porträttet beskriver innehållet, och dekorativa ikoner (sociala ikoner, byggnads-, plats- och kalenderikoner) har tom alt="", eftersom texten bredvid säger samma sak. Logotypen har aria-label. Menyknappen har aria-expanded och aria-controls, och klassen .visually-hidden döljer text visuellt men inte för skärmläsare. Alla interaktiva element är riktiga länkar och knappar, och jag har inte tagit bort webbläsarens fokusmarkering.
+DOM och händelser
 
-Jag har själv testat tillgänglighet med validator.w3.org och visade inga problem med tillgänglighet jag också testat att tabba genom sidorna och inga problem uppstog. 
+Jag använder JavaScript för att skapa HTML-element dynamiskt i stället för att skriva alla projektkort direkt i HTML.
 
-Styrkor och brister 
+I `createProjectCard()` använder jag `document.createElement()` för att skapa exempelvis `li`, `h2`, `p` och `a`. Sedan använder jag `append()` för att lägga till elementen på sidan.
 
-Det som blev bra är strukturen i base.css plus en fil per sida, och Work Experience-posterna, som följer skissen. Brister: många färger är hårdkodade ( #42446E, #666666) trots att jag har CSS-variabler i :root, mått är i px, och projektkorten är div i stället för article. Med mer tid skulle jag skriva om CSS:en mobile first, flytta färgerna till variabler, bygga korten som article i en Grid och göra menyn funktionell. Vad jag har märkt också är att mobile version i figma är en Screenshoot så man kunde inte ta de verkliga storlekar färger och platser på allt. 
+Jag använder också `addEventListener()` för att lyssna efter klick på filterknapparna och knappen för mörkt och ljust läge.
+
+Jag valde att använda funktioner för detta eftersom koden blir enklare att återanvända och ändra.
+
+Semantik och tillgänglighet
+
+Jag har försökt använda rätt HTML-element även när innehållet skapas med JavaScript.
+
+Projektkorten ligger i en lista med `ul` och `li`. Projektnamnen använder rubriker och länkarna skapas med `a`.
+
+För interaktiva funktioner använder jag riktiga `button`-element i stället för klickbara `div`-element.
+
+Filterknapparna använder också `aria-pressed` för att visa vilket filter som är aktivt.
+
+Jag har kontrollerat mina HTML-filer med W3C Validator och fått 0 fel. Jag har även testat projektsidan med tangentbord för att kontrollera att länkar och knappar fungerar utan mus.
+
+Mörkt och ljust läge
+
+Jag har byggt temaväxlingen med CSS-variabler och klassen `dark-theme`.
+
+När besökaren klickar på knappen använder JavaScript `classList.toggle()` för att lägga till eller ta bort klassen på HTML-elementet.
+
+Jag använder också `localStorage` för att spara användarens val, så att samma tema behålls när man byter sida eller uppdaterar webbläsaren.
+
+Jag valde CSS-variabler eftersom färgerna då kan ändras på ett ställe. Om jag hade ändrat varje färg direkt med JavaScript skulle koden blivit längre och svårare att underhålla.
+
+Felhantering och laddning
+
+När projektsidan öppnas visas texten "Loading projects..." medan informationen hämtas.
+
+Om GitHub-anropet misslyckas visas ett felmeddelande på sidan i stället för att besökaren bara ser en tom yta.
+
+Jag kontrollerar också om projektlistan är tom och visar då ett meddelande.
+
+Jag valde att visa dessa meddelanden eftersom besökaren ska förstå vad som händer, även om GitHub svarar långsamt eller ett fel uppstår.
+
+Jag har testat felhanteringen genom att tillfälligt använda en felaktig API-adress och kontrollera att felmeddelandet visas.
+
+Styrkor och förbättringar
+
+Jag tycker att en styrka med min portfolio är att jag har återanvänt designen från U01 och samtidigt gjort innehållet mer dynamiskt.
+
+Jag är också nöjd med att projekten hämtas automatiskt och att besökaren kan filtrera dem efter programmeringsspråk.
+
+En sak jag skulle förbättra med mer tid är felhanteringen för de två datakällorna. Just nu kan ett misslyckat GitHub-anrop göra att även det lokala projektet inte visas.
+
+Jag skulle vilja ändra detta så att lokala projekt fortfarande visas även om GitHub inte fungerar.
 
 AI-verktyg
 
-Jag har använt Claude för att få en grundstruktur för HTML i vissa platser, jag har också frågat om förklaring och felsökning på vissa platser som ex Flexbox-strukturen i About och grid i Tech Stack. Alla mått och färger är från Figma.
+Jag har använt ChatGPT som stöd under utvecklingen av min portfolio.
+
+Jag använde AI för att få hjälp med JavaScript, GitHub API, JSON, CSS och felsökning.
+
+Jag har inte bara kopierat kod utan också testat funktionerna i webbläsaren och ändrat koden för att passa min befintliga design.
+
+Ett exempel är projektkorten, där jag anpassade JavaScript-koden så att den använder CSS-klasserna från min tidigare portfolio.
+
+AI har hjälpt mig att förstå hur funktionerna fungerar, men jag har själv arbetat med att lägga in, testa och anpassa ändringarna.
+
